@@ -1,0 +1,34 @@
+###ThymeLeaf配置
+spring:
+  thymeleaf:
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML5
+    #编码 可不用配置
+    encoding: UTF-8
+    #内容类别,可不用配置
+    servlet:
+      content-type: text/html
+    #开发配置为false,避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates，可以不用配置，后缀
+    prefix: classpath:/templates/
+    #suffix: .html
+#mybatis
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:pub/ants/miaosha/mapper/*Mapper.xml
+  type-aliases-package: pub.ants.miaosha.entity
+  configuration.map-underscore-to-camel-case: true
+
+#showSql
+logging:
+  level:
+    pub.ants.miaosha.mapper: DEBUG
