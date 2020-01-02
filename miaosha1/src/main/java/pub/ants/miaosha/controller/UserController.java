@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import pub.ants.miaosha.entity.UserEntity;
+import pub.ants.miaosha.redis.RedisService;
 import pub.ants.miaosha.result.Result;
 import pub.ants.miaosha.service.UserService;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +23,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 public class UserController {
+    @Autowired
+    RedisService redisService;
 
+    @RequestMapping("/redis/get")
+    public Result<Long> redisGet(){
+        redisService.set("key1",12345l);
+        return Result.success(redisService.get("key1",Long.class));
+    }
     //测试用户模块操作
     @Autowired
     private UserService userService;
@@ -47,5 +57,7 @@ public class UserController {
     public String hello(){
         return "hello";
     }
+
+
 
 }

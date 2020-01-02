@@ -22,6 +22,18 @@ spring:
     url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root
     password: 123456
+myprops:
+  database: 10
+  host: 47.101.65.44
+  port: 6379
+  password: magaowei
+  timeout: 43200000
+  maxIdle: 8  #资源池允许最大空闲的连接数 默认值8
+  minIdle: 0  #资源池确保最少空闲的连接数 默认值0
+  maxTotal: 8 #资源池中最大连接数 默认值8
+  maxActive: 2000
+  maxWaitMillis: 1000
+  blockWhenExhausted: false
 
 mybatis:
   mapper-locations: classpath:pub/ants/miaosha/mapper/*Mapper.xml
@@ -32,3 +44,6 @@ mybatis:
 logging:
   level:
     pub.ants.miaosha.mapper: DEBUG
+
+person:
+  my-name: zhangsan
